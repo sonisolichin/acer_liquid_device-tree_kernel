@@ -1,0 +1,26 @@
+diff --git a/frameworks/base/services/java/com/android/server/PowerManagerService.java b/frameworks/base/services/java/com/android/server/PowerManagerService.java
+index 44eb228..14e5ad1 100644
+--- a/frameworks/base/services/java/com/android/server/PowerManagerService.java
++++ b/frameworks/base/services/java/com/android/server/PowerManagerService.java
+@@ -110,10 +110,10 @@ class PowerManagerService extends IPowerManager.Stub
+     private static final int LONG_DIM_TIME = 7000;              // t+N-5 sec
+ 
+     // How long to wait to debounce light sensor changes.
+-    private static final int LIGHT_SENSOR_DELAY = 2000;
++    private static final int LIGHT_SENSOR_DELAY = 400;
+ 
+     // For debouncing the proximity sensor.
+-    private static final int PROXIMITY_SENSOR_DELAY = 1000;
++    private static final int PROXIMITY_SENSOR_DELAY = 200;
+ 
+     // trigger proximity if distance is less than 5 cm
+     private static final float PROXIMITY_THRESHOLD = 5.0f;
+@@ -2623,7 +2623,7 @@ class PowerManagerService extends IPowerManager.Stub
+                 // we only do this if we are undocked, since lighting should be stable when
+                 // stationary in a dock.
+                 int lcdValue = getAutoBrightnessValue(
+-                        (mIsDocked ? value : mHighestLightSensorValue),
++                        value,
+                         mLastLcdValue,
+                         (mCustomLightEnabled ? mCustomLightLevels : mAutoBrightnessLevels),
+                         (mCustomLightEnabled ? mCustomLcdValues : mLcdBacklightValues));
