@@ -15,13 +15,14 @@
 
 LOCAL_PATH := device/acer/salsa/
 
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := a1-keypad.kcm
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_KEY_CHAR_MAP)
-
 # include the non-open-source counterpart to this file
 BOARD_GPS_LIBRARIES := libloc_api
 
 USE_CAMERA_STUB := true
+#
+# Boot files
+#
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_KERNEL):kernel
 

@@ -29,9 +29,8 @@
 #	export JAVA_HOME=$J2SDKDIR
 #fi
 
-add_lunch_combo cm_salsa-userdebug
-add_lunch_combo cm_salsa-eng
-add_lunch_combo cm_salsa-user
+add_lunch_combo full_salsa-userdebug
+add_lunch_combo full_salsa-eng
 echo ""
 echo "Patching Salsa Workspace..."
 echo ""

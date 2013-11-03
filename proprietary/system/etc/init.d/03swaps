@@ -1,6 +1,6 @@
 #!/system/bin/sh
 #
-#      Enable Compcache Before SWAP in a1 device
+# Enable Compcache Before SWAP in a1 device
 #
 
 RAM=$(cat /proc/meminfo | grep MemTotal | awk '{print $2}')
@@ -11,11 +11,13 @@ sleep 2
 
 if [ $RAM -lt "200000" ]; then
 
-	if [[ -e /data/swapfile ]]; then
-		SWAP=$(losetup -f)
-		losetup $SWAP /data/swapfile
-	else
-		SWAP=$SDSWAP
-	fi
-	swapon $SWAP
+if [[ -e /data/swapfile ]]; then
+SWAP=$(losetup -f)
+losetup $SWAP /data/swapfile
+else
+SWAP=$SDSWAP
 fi
+swapon $SWAP
+fi
+
+
