@@ -1,6 +1,4 @@
-Device tree to compile Cyanogenmod 10 for acer liquid (salsa)
-=========================================
-Warning in this version you must use gcc version 4.4.3 otherwise you'll get some errors in kernel and modules
+Device tree to compile Cyanogenmod 7 for acer liquid (salsa)
 =========================================
 
 Not working in this stuff:
@@ -62,39 +60,39 @@ to end of file add one string:
 
 #6 create work directory:
 "mkdir ~/sources"
-"mkdir ~/sources/cm10"
+"mkdir ~/sources/cm7_2"
 ```
 
 How to compile:
 ```
-#1 first you need to download cyanogenmod 10 sources into (~/sources/cm10):
-"repo init -u git://github.com/CyanogenMod/android.git -b jellybean"
+#1 first you need to download cyanogenmod 10 sources into (~/sources/cm7_2):
+"repo init -u git://github.com/CyanogenMod/android.git -b gb-release-7.2"
 
-#2 then goto cm10, device folder:
-"cd ~/sources/cm10/device"
+#2 then goto cm7_2, device folder:
+"cd ~/sources/cm7_2/device"
 
 #3 and make and move folder named "acer":
 "mkdir acer"
 "cd acer"
 
 #4 then clone this sources:
-"git clone https://github.com/RomzesRover/acer_liquid_device-tree_kernel.git -b cm10"
+"git clone https://github.com/RomzesRover/acer_liquid_device-tree_kernel.git -b cm7_2"
 
 #5 and rename folder "acer_liquid_device-tree_kernel" to "salsa":
-"mv ~/sources/cm10/device/acer/acer_liquid_device-tree_kernel  ~/sources/cm10/device/acer/salsa"
+"mv ~/sources/cm7_2/device/acer/acer_liquid_device-tree_kernel  ~/sources/cm7_2/device/acer/salsa"
 
-#6 then move to cm10 root directory:
-"cd ~/sources/cm10"
+#6 then move to cm7_2 root directory:
+"cd ~/sources/cm7_2"
 
-#7 and prepare to compile cm10;
-"~/sources/cm10/vendor/cm/get-prebuilts"
-"cd ~/sources/cm10"
+#7 and prepare to compile cm7_2;
+"~/sources/cm7_2/vendor/cm/get-prebuilts"
+"cd ~/sources/cm7_2"
 ". build/envsetup.sh"
 
-#8 and now you can compile cm10 for liquid:
+#8 and now you can compile cm7_2 for liquid:
 "brunch salsa -j5"
 
-#9 That's all the result will be in ~/sources/cm10/out/target/salsa
+#9 That's all the result will be in ~/sources/cm7_2/out/target/salsa
 thx.
 ```
 
@@ -111,7 +109,7 @@ Usefull commands with commets in russian language:
 repo forall -c git reset --hard			- Очистка исходников android от патчей
 make clean					- Очистка от итогов компиляции (для ядра и android)
 make mrproper					- Очистка ядра от конфигов (ВАЖНО если компилируешь в первый раз)
-/sources/cm10_1/vendor/cm/get-prebuilts	- Получить пребуилтс (Приложения, которые не собираются из исходников)
+/sources/cm7_2_1/vendor/cm/get-prebuilts	- Получить пребуилтс (Приложения, которые не собираются из исходников)
 . build/envsetup.sh				- Обязательно перед компиляцией
 brunch salsa -j5				- Собрать прошивку для ливкида (на 4х ядерном хосте)
 
