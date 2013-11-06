@@ -67,6 +67,7 @@ How to compile:
 ```
 #1 first you need to download cyanogenmod 10 sources into (~/sources/cm7_2):
 "repo init -u git://github.com/CyanogenMod/android.git -b gb-release-7.2"
+"repo sync"
 
 #2 then goto cm7_2, device folder:
 "cd ~/sources/cm7_2/device"
@@ -84,15 +85,24 @@ How to compile:
 #6 then move to cm7_2 root directory:
 "cd ~/sources/cm7_2"
 
-#7 and prepare to compile cm7_2;
+#7 add new line to: cm7_2/vendor/cyanogen/vendorsetup.sh
+"add_lunch_combo cyanogen_salsa-eng"
+
+#8 copy cyanogen_salsa.mk to: cm7_2/vendor/cyanogen/products/
+"cp ~/sources/cm7_2/device/acer/salsa/cyanogen_salsa.mk ~/sources/cm7_2/vendor/cyanogen/products/cyanogen_salsa.mk" 
+
+#9 add new line to: cm7_2/vendor/cyanogen/products/AndroidProducts.mk
+"$(LOCAL_DIR)/cyanogen_salsa.mk \"
+
+#10 and prepare to compile cm7_2;
 "~/sources/cm7_2/vendor/cm/get-prebuilts"
 "cd ~/sources/cm7_2"
 ". build/envsetup.sh"
 
-#8 and now you can compile cm7_2 for liquid:
+#11 and now you can compile cm7_2 for liquid:
 "brunch salsa -j5"
 
-#9 That's all the result will be in ~/sources/cm7_2/out/target/salsa
+#12 That's all the result will be in ~/sources/cm7_2/out/target/salsa
 thx.
 ```
 
